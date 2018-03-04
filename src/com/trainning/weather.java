@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 
@@ -17,6 +18,9 @@ import org.json.simple.JSONObject;
 @WebServlet("/weather")
 public class weather extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	int count=0;
+	JSONArray  cities = new JSONArray();
+	JSONObject  list = new JSONObject();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -31,28 +35,21 @@ public class weather extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("hellooooobhai");
-		JSONObject word = new JSONObject();
-		try
-		{
-			word.put("city",request.getParameter("city"));
-			System.out.println(word);
-		}
-		catch (Exception e)
-		{ 
-		}
-try {
-			
-			FileWriter jsonFileWriter = new FileWriter("/home/sapient/Documents/Jee_Servlet/Weather/src/com/trainning/result.json",true);
-			jsonFileWriter.write(word.toString());
-			jsonFileWriter.flush();
-			jsonFileWriter.close();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			response.setContentType("application/json");
-			response.getWriter().write(word.toString());
-		}
+		cities.add(count++,request.getParameter("city"));
+		list.put("city",cities);
+	
+	try {
+		
+		FileWriter jsonFileWriter = new FileWriter("/home/anand/Documents/workspace-sts-3.9.2.RELEASE/jee/weather24/src/com/trainning/result.json");
+		jsonFileWriter.write(list.toString());
+		jsonFileWriter.flush();
+		jsonFileWriter.close();
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	} 		
+	response.setContentType("application/json");
+	response.getWriter().write(cities.toString());
 }
 
 
