@@ -34,7 +34,7 @@ public class ShowFavourite extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		JSONObject cityname=new JSONObject();
 		try {
-			cityname = (JSONObject) parser.parse(new FileReader("//home//anand//Documents//workspace-sts-3.9.2.RELEASE//jee//weather24//src//com//trainning//result.json"));
+			cityname = (JSONObject) parser.parse(new FileReader("/home/sapient/Documents/Jee_Servlet/weather_project/src/com/trainning/result.json"));
 			System.out.println(cityname);
 			response.setContentType("application/json");
 			response.getWriter().write(cityname.toString());

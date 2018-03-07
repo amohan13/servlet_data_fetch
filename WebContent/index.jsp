@@ -20,11 +20,12 @@
         <input type="text" name="city" class="form-control" id="data" placeholder="city Name">    
         <button id="submitWeather" class="btn btn-primary" onclick="getData()">Search city</button>
         <button id="data_weather" class="btn btn-primary" onclick="servlet_ajax()">ADD TO FAVOURITE</button>
-        <button class="btn btn-primary" onclick="ShowFavourite()">List of favourites</button>
+        <button class="btn btn-primary" onclick="location.href='listfav.jsp'">List of favourites</button>
     </div>
    <div id="show"> </div>
    <div id="newshow"> </div>
 </div>
+<div class="container" id="temp"> </div>
  
 
 <script type="text/javascript" src="script.js"></script>
